@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/Semantic-UI-CSS-master/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="/static/Semantic-UI-CSS-master/semantic.css">
+    <script src="/static/Semantic-UI-CSS-master/semantic.js"></script>
+
+</head>
+<body>
+<div style="background: url(/static/man_bg.jpg) no-repeat">
+<h1 class="ui header center aligned">曼城情报站</h1>
+
+<div class="ui top attached tabular menu">
+  <a class="active item" data-tab="first">新闻</a>
+  <a class="item" data-tab="second">赛后数据</a>
+  <a class="item" data-tab="third">排名</a>
+</div>
+<div class="ui bottom attached active tab segment" data-tab="first">
+{#    新闻#}
+    <div class="ui equal width grid">
+      <div class="column">
+        <div class="ui segment" data-tab="news_first"><img src="/static/sina_sport.PNG" style="margin: auto" class="small"></div>
+      </div>
+      <div class="column">
+        <div class="ui segment" data-tab="news_second" id="163"><img src="/static/163_sport.PNG" style="margin: auto" class="small"></div>
+      </div>
+      <div class="column">
+        <div class="ui segment" data-tab="news_third" id="qq"><img src="/static/qq.PNG" style="margin: auto" class="small"></div>
+      </div>
+    </div>
+
+    <div class="ui bottom attached active tab segment" data-tab="news_first" >
+{#    新浪新闻内容#}
+            <ul>
+                {% for item in news_sina %}
+                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+{#                    semantic ui分割条#}
+                <div class="ui horizontal divider"></div>
+                {% endfor %}
+            </ul>
+{#    翻页div#}
+             <div class="pagination">
+                {% if  news_sina.has_previous %}
+                    <a href="?page={{ news_sina.previous_page_number }}">pre</a>
+                {% endif %}
+                <span>{{ news_sina.number }} of {{ news_sina.paginator.num_pages }}</span>
+                {% if news_sina.has_next %}
+                    <a href="?page={{ news_sina.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
+    </div>
+
+    <div class="ui bottom attached tab segment" data-tab="news_second">
+{#    网易新闻内容#}
+            <ul>
+                {% for item in news_163 %}
+                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+                <div class="ui horizontal divider"></div>
+                {% endfor %}
+            </ul>
+    {#    翻页div#}
+             <div class="pagination">
+                {% if  news_163.has_previous %}
+                    <a href="?page={{ news_163.previous_page_number }}">pre</a>
+                {% endif %}
+                <span>{{ news_163.number }} of {{ news_163.paginator.num_pages }}</span>
+                {% if news_163.has_next %}
+                    <a href="?page={{ news_163.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="news_third">
+{#        腾讯新闻内容 #}
+            <ul>
+                {% for item in news_qq %}
+                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+                <div class="ui horizontal divider"></div>
+                {% endfor %}
+            </ul>
+    {#    翻页div#}
+             <div class="pagination">
+                {% if  news_qq.has_previous %}
+                    <a href="?page={{ news_qq.previous_page_number }}">pre</a>
+                {% endif %}
+                <span>{{ news_qq.number }} of {{ news_qq.paginator.num_pages }}</span>
+                {% if news_qq.has_next %}
+                    <a href="?page={{ news_qq.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
+    </div>
+
+</div>
+    <div class="ui bottom attached tab segment" data-tab="second">赛后数据内容</div>
+    <div class="ui bottom attached tab segment" data-tab="third">排名内容</div>
+<h4 class="ui horizontal inverted divider" style="color: black">Design by John </h4>
+</div>
+<script>
+    $('.menu .item').tab();
+    $('.column .segment').tab()
+    $('#163').click(function () {
+
+    })
+</script>
+</body>
+</html>
