@@ -6,7 +6,6 @@
     <script src="/static/Semantic-UI-CSS-master/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/Semantic-UI-CSS-master/semantic.css">
     <script src="/static/Semantic-UI-CSS-master/semantic.js"></script>
-
 </head>
 <body>
 <div style="background: url(/static/man_bg.jpg) no-repeat">
@@ -35,7 +34,7 @@
 {#    新浪新闻内容#}
             <ul>
                 {% for item in news_sina %}
-                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+                <span><a href="{{ item.url }}" target="_blank">{{ item.title }}  {{ item.pub_date }}</a></span>
 {#                    semantic ui分割条#}
                 <div class="ui horizontal divider"></div>
                 {% endfor %}
@@ -56,7 +55,7 @@
 {#    网易新闻内容#}
             <ul>
                 {% for item in news_163 %}
-                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+                <span><a href="{{ item.url }}" target="_blank">{{ item.title }}  {{ item.pub_date }}</a></span>
                 <div class="ui horizontal divider"></div>
                 {% endfor %}
             </ul>
@@ -75,7 +74,7 @@
 {#        腾讯新闻内容 #}
             <ul>
                 {% for item in news_qq %}
-                <span><a href="{{ item.url }}">{{ item.title }}  {{ item.pub_date }}</a></span>
+                <span><a href="{{ item.url }}" target="_blank">{{ item.title }}  {{ item.pub_date }}</a></span>
                 <div class="ui horizontal divider"></div>
                 {% endfor %}
             </ul>

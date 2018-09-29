@@ -7,6 +7,7 @@ M = Man_City()
 
 def get_db(request):
     M.main()
+    #按日期只显示60条新闻
     db_sina = sina.objects.order_by('-pub_date')[:60]
     db_163 = n_163.objects.order_by('-pub_date')[:60]
     db_qq = qq.objects.order_by('-pub_date')[:60]
@@ -16,6 +17,7 @@ def get_db(request):
     return render(request, 'city.html', {'news_sina':news_sina, 'news_163':news_163, 'news_qq':news_qq})
 
 def get_page(request, soup_db):
+    #Django自带的翻页功能，每页显示10条新闻
     page = request.GET.get('page', 1)
     paginator = Paginator(soup_db, 10)
     page_loaded = paginator.page(page)
