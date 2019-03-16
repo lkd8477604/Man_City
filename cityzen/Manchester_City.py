@@ -67,7 +67,7 @@ class Man_City():
         url='http://sports.qq.com/premierleague/'
         data_get=requests.get(url, headers=self.header)
         soup = BeautifulSoup(data_get.text, 'lxml')
-        titels = soup.select('.newsul.newsCont3 .news_txt a')
+        titels = soup.select('.newsul.newsCont2 .news_txt a')
         for i in titels:
             # 跟新浪一样的，日期包含在url中
             pub_date_soup = i.get('href').split('/')[-2]
