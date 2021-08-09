@@ -71,7 +71,7 @@ pyquery==1.4.0
 pyspider==0.3.10
 python-dateutil==2.7.5
 pytz==2018.5
-pywin32==224
+pywin32==301
 pywinpty==0.5.4
 PyYAML==3.13
 pyzmq==17.1.2
